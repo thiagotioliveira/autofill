@@ -13,6 +13,16 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: name
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
                   name: password
                   type: varchar(100)
                   constraints:
@@ -27,6 +37,16 @@ databaseChangeLog:
                   type: int
                   defaultValueNumeric: 5
               - column:
+                  name: commercial_code
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: team_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
                   name: version
                   type: int
         - insert:
@@ -35,6 +55,12 @@ databaseChangeLog:
               - column:
                   name: username
                   value: admin
+              - column:
+                  name: name
+                  value: administrator
+              - column:
+                  name: email
+                  value: thiago@thiagoti.com
               - column:
                   name: password
                   value: $2a$12$hqOSFTSapmZdHVi/K8PT0.h2HhPDBCyW6Kq/fNs5WJ.xvFyigAyCm
@@ -45,6 +71,12 @@ databaseChangeLog:
                   name: balance
                   value: 0
               - column:
+                  name: commercial_code
+                  value: ADMIN
+              - column:
+                  name: team_name
+                  value: ADMIN
+              - column:
                   name: version
                   value: 0
         - insert:
@@ -54,6 +86,12 @@ databaseChangeLog:
                   name: username
                   value: hugo
               - column:
+                  name: name
+                  value: Hugo Fasanaro
+              - column:
+                  name: email
+                  value: edpwondertrade16@gmail.com
+              - column:
                   name: password
                   value: $2a$12$AvMed.ionptzv60ptv0wyekLqUs6i1PELfYL8aTzloCCjmTdjSqXu
               - column:
@@ -62,6 +100,12 @@ databaseChangeLog:
               - column:
                   name: balance
                   value: 30
+              - column:
+                  name: commercial_code
+                  value: WT98
+              - column:
+                  name: team_name
+                  value: Diogo Amaro
               - column:
                   name: version
                   value: 0

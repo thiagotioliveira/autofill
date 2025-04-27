@@ -20,29 +20,43 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
 
-form:
-  fields:
-    team:
-      id: 2133102029
-      defaultValue: "Equipe de Test"
-    customerName:
-      id: 666845767
-    nif:
-      id: 1963896177
-    supplyAddress:
-      id: 882401350
-    billingAddress:
-      id: 40401457
-    cui:
-      id: 227626344
-    cpe:
-      id: 2001568598
+app:
+  formBaseUrl: https://docs.google.com/forms/d/e/1FAIpQLSda_Vwux5B4YYcuhpHh0iGBa57ea1j4ZY0ACV0BXJG2_kzSPA/viewform
+  form:
+    fields:
+      name:
+        id: 206086423
+        useFromUser: true
+      #email:
+      #  id: 206086423
+      #  useFromUser: true
+      commercialCode:
+        id: 803375399
+        useFromUser: true
+      teamName:
+        id: 2133102029
+        useFromUser: true
+      customerName:
+        id: 666845767
+      nif:
+        id: 1963896177
+      supplyAddress:
+        id: 882401350
+      billingAddress:
+        id: 40401457
+      cui:
+        id: 227626344
+      cpe:
+        id: 2001568598
+      region:
+        id: 692175942
+      geographicCoordinates:
+        id: 891984580
 
 openai:
   model: gpt-4.1-mini-2025-04-14
   apiKey:
   apiUrl: https://api.openai.com/v1/chat/completions
-  formBaseUrl: https://docs.google.com/forms/d/e/1FAIpQLSda_Vwux5B4YYcuhpHh0iGBa57ea1j4ZY0ACV0BXJG2_kzSPA/viewform
   max-completions: 1
   temperature: 0
 

@@ -35,7 +35,7 @@ public class URLGeneratorService {
         if(!"ADMIN".equalsIgnoreCase(user.getRole()) && !user.hasLimit()){
             throw new DomainException("limit reached");
         }
-        Map<String, String> params = this.processor.process(this.extractor.extract(new DocumentForExtraction(inputStream)));
+        Map<String, String> params = this.processor.process(user, this.extractor.extract(new DocumentForExtraction(inputStream)));
 
         this.userService.computeRequest(user);
         String queryString = params.entrySet().stream()

@@ -19,12 +19,12 @@ public class UserRepositoryAdapter implements UserRepository {
     @Override
     public Optional<User> findByUsername(String username) {
         return this.userRepository.findById(username)
-                .map(u -> new User(u.getUsername(), u.getPassword(), u.getRole(), u.getLimit(), u.getVersion()));
+                .map(u -> new User(u.getName(), u.getUsername(), u.getEmail(), u.getPassword(), u.getRole(), u.getLimit(), u.getCommercialCode(), u.getTeamName(), u.getVersion()));
     }
 
     @Override
     public User save(User user) {
-        UserEntity userSaved = this.userRepository.save(new UserEntity(user.getUsername(), user.getPassword(), user.getRole(), user.getLimit(), user.getVersion()));
-        return new User(userSaved.getUsername(), userSaved.getPassword(), userSaved.getRole(), userSaved.getLimit(), userSaved.getVersion());
+        UserEntity userSaved = this.userRepository.save(new UserEntity(user.getName(), user.getUsername(), user.getEmail(), user.getPassword(), user.getRole(), user.getLimit(), user.getCommercialCode(), user.getTeamName(), user.getVersion()));
+        return new User(userSaved.getName(), userSaved.getUsername(), userSaved.getEmail(), userSaved.getPassword(), userSaved.getRole(), userSaved.getLimit(), userSaved.getCommercialCode(), userSaved.getTeamName(), userSaved.getVersion());
     }
 }

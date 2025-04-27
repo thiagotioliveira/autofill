@@ -1,12 +1,13 @@
 package dev.thiagooliveira.poc_autofill_processor.infrastructure.processor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.thiagooliveira.poc_autofill_processor.config.FieldProperties;
-import dev.thiagooliveira.poc_autofill_processor.config.FormProperties;
+import dev.thiagooliveira.poc_autofill_processor.config.props.FieldProperties;
+import dev.thiagooliveira.poc_autofill_processor.config.props.FormProperties;
 import dev.thiagooliveira.poc_autofill_processor.domain.exception.GenericErrorException;
 import dev.thiagooliveira.poc_autofill_processor.domain.model.Form;
 import dev.thiagooliveira.poc_autofill_processor.domain.model.RawDocument;
 import dev.thiagooliveira.poc_autofill_processor.domain.processor.Processor;
+import dev.thiagooliveira.poc_autofill_processor.domain.user.User;
 import dev.thiagooliveira.poc_autofill_processor.infrastructure.processor.model.ChatRequest;
 import dev.thiagooliveira.poc_autofill_processor.infrastructure.processor.model.ChatResponse;
 import dev.thiagooliveira.poc_autofill_processor.infrastructure.processor.model.Message;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +30,9 @@ public class OpenAIProcessor implements Processor {
             "supplyAddress(String), " +
             "billingAddress(String), " +
             "cui(String), " +
-            "cpe(String)";
+            "cpe(String)" +
+            "region(String)" +
+            "geographicCoordinates(String, calcule a cordenada geografica com base campo 'supplyAddress')";
     private static final String PROMPT_2 = "Olá, nao precisa me responder formalmente, poderia extrair informações desta fonte de dado e retornar apenas o json seguindo o schema de componentes abaixo:" +
             "components:\n" +
             "  schemas:\n" +
@@ -300,8 +304,8 @@ public class OpenAIProcessor implements Processor {
     }
 
     @Override
-    public Map<String, String> process(RawDocument document) {
-        logger.debug("raw pdf content: {}", document.value());
+    public Map<String, String> process(User user, RawDocument document) {
+        //logger.debug("raw pdf content: {}", document.value());
         List<Message> messages = new ArrayList<>();
         String prompt = PROMPT_1 +
                 "\n\nUtilize a seguinte fonte de dado abaixo:" +
@@ -326,9 +330,18 @@ public class OpenAIProcessor implements Processor {
             formProperties.getFields()
                     .entrySet()
                     .stream()
-                    .filter(entry -> entry.getValue().defaultValue() != null)
+                    .filter(entry -> entry.getValue().useFromUser())
                     .forEach(entry -> {
-                        result.put("entry."+entry.getValue().id(), entry.getValue().defaultValue());
+                        try {
+                            Object value = User.class.getMethod("get" + entry.getKey().substring(0, 1).toUpperCase().concat(entry.getKey().substring(1))).invoke(user);
+                            result.put("entry."+entry.getValue().id(), String.valueOf(value));
+                        } catch (IllegalAccessException e) {
+                            throw new RuntimeException(e);
+                        } catch (InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        } catch (NoSuchMethodException e) {
+                            throw new RuntimeException(e);
+                        }
                     });
             return result;
         } catch (Exception e) {

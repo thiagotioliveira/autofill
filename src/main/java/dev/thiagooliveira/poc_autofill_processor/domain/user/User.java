@@ -1,17 +1,25 @@
 package dev.thiagooliveira.poc_autofill_processor.domain.user;
 
 public class User {
+    private String name;
     private String username;
+    private String email;
     private String password;
     private String role;
     private int limit;
+    private String commercialCode;
+    private String teamName;
     private int version;
 
-    public User(String username, String password, String role, int limit, int version) {
+    public User(String name, String username, String email, String password, String role, int limit, String commercialCode, String teamName, int version) {
+        this.name = name;
         this.username = username;
+        this.email = email;
         this.password = password;
         this.role = role;
         this.limit = limit;
+        this.commercialCode = commercialCode;
+        this.teamName = teamName;
         this.version = version;
     }
 
@@ -65,5 +73,37 @@ public class User {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCommercialCode() {
+        return commercialCode;
+    }
+
+    public void setCommercialCode(String commercialCode) {
+        this.commercialCode = commercialCode;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
