@@ -1,0 +1,6 @@
+customerName: string
+nif: string
+supplyAddress: string
+billingAddress: string
+cui: string
+cpe: string

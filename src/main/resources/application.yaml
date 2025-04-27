@@ -1,0 +1,56 @@
+spring:
+  application:
+    name: poc-autofill-processor
+  datasource:
+    url: jdbc:h2:mem:autofill;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: validate # ou none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+form:
+  fields:
+    team:
+      id: 2133102029
+      defaultValue: "Equipe de Test"
+    customerName:
+      id: 666845767
+    nif:
+      id: 1963896177
+    supplyAddress:
+      id: 882401350
+    billingAddress:
+      id: 40401457
+    cui:
+      id: 227626344
+    cpe:
+      id: 2001568598
+
+openai:
+  model: gpt-4.1-mini-2025-04-14
+  apiKey:
+  apiUrl: https://api.openai.com/v1/chat/completions
+  formBaseUrl: https://docs.google.com/forms/d/e/1FAIpQLSda_Vwux5B4YYcuhpHh0iGBa57ea1j4ZY0ACV0BXJG2_kzSPA/viewform
+  max-completions: 1
+  temperature: 0
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: off
+    org.springframework: off
+    dev.thiagooliveira: info

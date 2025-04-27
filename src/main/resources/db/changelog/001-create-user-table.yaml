@@ -1,0 +1,67 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: thiago.oliveira
+      changes:
+        - createTable:
+            tableName: user_entity
+            columns:
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: int
+                  defaultValueNumeric: 5
+              - column:
+                  name: version
+                  type: int
+        - insert:
+            tableName: user_entity
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$12$hqOSFTSapmZdHVi/K8PT0.h2HhPDBCyW6Kq/fNs5WJ.xvFyigAyCm
+              - column:
+                  name: role
+                  value: ADMIN
+              - column:
+                  name: balance
+                  value: 0
+              - column:
+                  name: version
+                  value: 0
+        - insert:
+            tableName: user_entity
+            columns:
+              - column:
+                  name: username
+                  value: hugo
+              - column:
+                  name: password
+                  value: $2a$12$AvMed.ionptzv60ptv0wyekLqUs6i1PELfYL8aTzloCCjmTdjSqXu
+              - column:
+                  name: role
+                  value: USER
+              - column:
+                  name: balance
+                  value: 30
+              - column:
+                  name: version
+                  value: 0
