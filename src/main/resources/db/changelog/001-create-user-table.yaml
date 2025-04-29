@@ -63,7 +63,7 @@ databaseChangeLog:
                   value: thiago@thiagoti.com
               - column:
                   name: password
-                  value: $2a$12$hqOSFTSapmZdHVi/K8PT0.h2HhPDBCyW6Kq/fNs5WJ.xvFyigAyCm
+                  value: $2a$12$.NciS4bcC/GlOAUI1ReJUe9f9J2JpGw/jUAfBFt9Aobo6i5TMqiM.
               - column:
                   name: role
                   value: ADMIN
