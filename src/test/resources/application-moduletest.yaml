@@ -1,5 +1,0 @@
-logging:
-  level:
-    root: off
-    org.springframework: info
-    dev.thiagooliveira: debug

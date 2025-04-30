@@ -1,7 +1,7 @@
 package dev.thiagooliveira.poc_autofill_processor.config;
 
 import dev.thiagooliveira.poc_autofill_processor.domain.URLGeneratorService;
-import dev.thiagooliveira.poc_autofill_processor.domain.extractor.Extractor;
+import dev.thiagooliveira.poc_autofill_processor.domain.extractor.TextExtractor;
 import dev.thiagooliveira.poc_autofill_processor.domain.processor.Processor;
 import dev.thiagooliveira.poc_autofill_processor.domain.user.UserRepository;
 import dev.thiagooliveira.poc_autofill_processor.domain.user.UserService;
@@ -20,10 +20,10 @@ public class DomainConfig {
     @Bean
     public URLGeneratorService urlGeneratorService(
             @Value("${app.formBaseUrl}") String formBaseUrl,
-            Extractor extractor,
+            TextExtractor textExtractor,
             Processor processor,
             UserService userService) {
-        return new URLGeneratorService(formBaseUrl, extractor, processor, userService);
+        return new URLGeneratorService(formBaseUrl, textExtractor, processor, userService);
     }
 
 }

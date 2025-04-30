@@ -30,8 +30,8 @@ public class OpenAIProcessor implements Processor {
             "supplyAddress(String), " +
             "billingAddress(String), " +
             "cui(String), " +
-            "cpe(String)" +
-            "region(String)" +
+            "cpe(String)," +
+            "region(String)," +
             "geographicCoordinates(String, calcule a cordenada geografica com base campo 'supplyAddress')";
 
     private static Logger logger = LoggerFactory.getLogger(OpenAIProcessor.class);
@@ -59,7 +59,7 @@ public class OpenAIProcessor implements Processor {
 
     @Override
     public Map<String, String> process(User user, RawDocument document) {
-        //logger.debug("raw pdf content: {}", document.value());
+        logger.debug("send content to openai");
         List<Message> messages = new ArrayList<>();
         String prompt = PROMPT_1 +
                 "\n\nUtilize a seguinte fonte de dado abaixo:" +

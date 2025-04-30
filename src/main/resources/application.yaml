@@ -1,6 +1,10 @@
 spring:
   application:
     name: poc-autofill-processor
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
   datasource:
     url: jdbc:h2:mem:autofill;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
@@ -58,7 +62,7 @@ app:
 
 openai:
   model: gpt-4.1-mini-2025-04-14
-  apiKey:
+  apiKey: 
   apiUrl: https://api.openai.com/v1/chat/completions
   max-completions: 1
   temperature: 0
@@ -68,6 +72,6 @@ server:
 
 logging:
   level:
-    root: off
+    root: error
     org.springframework: off
-    dev.thiagooliveira: info
+    dev.thiagooliveira: debug

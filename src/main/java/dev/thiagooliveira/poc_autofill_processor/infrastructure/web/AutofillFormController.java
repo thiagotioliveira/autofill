@@ -20,7 +20,7 @@ import java.net.URL;
 @RequestMapping("/autofill-form")
 public class AutofillFormController {
 
-    private static final Long MAX_SIZE_IN_BYTES = 500L * 1024L; // 500KB
+    private static final Long MAX_SIZE_IN_BYTES = 5L * 1024 * 1024; // 5MB
 
     private final URLGeneratorService urlGeneratorService;
 

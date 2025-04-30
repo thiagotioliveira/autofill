@@ -4,7 +4,7 @@ import dev.thiagooliveira.poc_autofill_processor.domain.exception.DomainExceptio
 import dev.thiagooliveira.poc_autofill_processor.domain.exception.GenericErrorException;
 import dev.thiagooliveira.poc_autofill_processor.domain.user.User;
 import dev.thiagooliveira.poc_autofill_processor.domain.user.UserService;
-import dev.thiagooliveira.poc_autofill_processor.domain.extractor.Extractor;
+import dev.thiagooliveira.poc_autofill_processor.domain.extractor.TextExtractor;
 import dev.thiagooliveira.poc_autofill_processor.domain.extractor.model.DocumentForExtraction;
 import dev.thiagooliveira.poc_autofill_processor.domain.processor.Processor;
 import org.slf4j.Logger;
@@ -20,13 +20,13 @@ public class URLGeneratorService {
     private static Logger logger = LoggerFactory.getLogger(URLGeneratorService.class);
 
     private final String formBaseUrl;
-    private final Extractor extractor;
+    private final TextExtractor extractor;
     private final Processor processor;
     private final UserService userService;
 
-    public URLGeneratorService(String formBaseUrl, Extractor extractor, Processor processor, UserService userService) {
+    public URLGeneratorService(String formBaseUrl, TextExtractor textExtractor, Processor processor, UserService userService) {
         this.formBaseUrl = formBaseUrl;
-        this.extractor = extractor;
+        this.extractor = textExtractor;
         this.processor = processor;
         this.userService = userService;
     }
