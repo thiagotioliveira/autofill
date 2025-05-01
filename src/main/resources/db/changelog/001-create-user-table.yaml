@@ -57,13 +57,13 @@ databaseChangeLog:
                   value: admin
               - column:
                   name: name
-                  value: administrator
+                  value: Hugo Fasanaro (as admin)
               - column:
                   name: email
-                  value: thiago@thiagoti.com
+                  value: edpwondertrade16@gmail.com
               - column:
                   name: password
-                  value: $2a$12$.NciS4bcC/GlOAUI1ReJUe9f9J2JpGw/jUAfBFt9Aobo6i5TMqiM.
+                  value: $2a$12$W8EF1349m9lYRpYapwAdBOJIhm945WVXFOxRe4enYJKjU/1rmYwge
               - column:
                   name: role
                   value: ADMIN
@@ -72,10 +72,10 @@ databaseChangeLog:
                   value: 0
               - column:
                   name: commercial_code
-                  value: ADMIN
+                  value: WT98
               - column:
                   name: team_name
-                  value: ADMIN
+                  value: Diogo Amaro
               - column:
                   name: version
                   value: 0

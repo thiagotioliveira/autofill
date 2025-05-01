@@ -45,7 +45,7 @@ public class URLGeneratorService {
 
         try {
             URL url = URI.create(formBaseUrl + "?" + queryString).toURL();
-            logger.info("Generated URL: " + url);
+            logger.info("User '{}' generated link: {}", user.getUsername(), url);
             return url;
         } catch (MalformedURLException e) {
             throw new GenericErrorException(e);

@@ -34,7 +34,7 @@ public class AutofillFormController {
             throw new DomainException("file is empty");
         }
         if(file.getSize() > MAX_SIZE_IN_BYTES) {
-            throw new DomainException("file is too big");
+            throw new DomainException("file is too big. (limit 5MB)");
         }
         try {
             URL url = this.urlGeneratorService.generate(user.getUser(), file.getInputStream());
